@@ -1,0 +1,29 @@
+﻿@using Umbraco.Core.PropertyEditors
+@inherits UmbracoViewPage
+@{
+    Layout = null;
+    // Get basic design settings from the homepage
+    var master = (Home)Model.Root();
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@Model.Name - @Model.Value("PageTitle")</title>
+    <meta name="description" content="@Model.Value("SeoMetaDescription")">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="@Url.Content("~/css/umbraco-starterkit-style.css")" />
+</head>
+<body>
+    @RenderBody()
+    <header>
+        header
+    </header>
+    <main>main</main>
+</body>
+
+</html>

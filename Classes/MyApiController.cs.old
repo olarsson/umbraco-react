@@ -1,0 +1,108 @@
+﻿/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Umbraco.Web;
+using Umbraco.Web.WebApi;
+using Newtonsoft.Json;
+using System.Web.Mvc;
+using DTOs.PostDTO;
+using Umbraco;
+using Umbraco.Web.Mvc;
+using Umbraco.Core.Models.PublishedContent;
+
+
+namespace Controllers.WebAPI.Qwerty
+{
+
+  public class ContentApiModel
+  {
+    public int ContentId { get; set; }
+  }
+
+  // https://localhost:44348/umbraco/api/ContentApi/getcontentbyid?id=1130
+  public class ContentApiController : UmbracoApiController
+  {
+    [HttpGet]
+    public ContentApiModel GetContentById(string id)
+    {
+      var content = Umbraco.Content(id);
+      return new ContentApiModel
+      {
+        ContentId = content.Id,
+      };
+    }
+
+  }
+}*/
+    /*
+[Route("api/[controller]")]
+public class PostsApiController : UmbracoApiController
+{
+  [HttpGet]
+  public string Test()
+  {
+
+    // var helper = Umbraco.Web.Composing.Current.UmbracoHelper;
+    // var node = helper.Content(1122);
+
+    // 1. Get content from umbraco
+    var content = Umbraco.Content(1122);
+
+    var eventsNode = content.FirstOrDefault(x => x.DocumentTypeAlias == "eventsList");
+
+    var events = eventsNode.Children.OfType<Event>()
+        .Where(x => x.Date == date);
+    //.Where(x => x.IsVisible()); ?!
+
+
+    //return Json<IEnumerable<Event>>(events.ToList());
+    return events;
+
+  }
+
+  }
+  */
+
+/*
+using System.Collections.Generic;
+using System.Linq;
+using Umbraco.Web;
+using System.Web.Http;
+using Umbraco.Web.WebApi;
+using Umbraco;
+
+namespace Umbraco8.Controllers
+{
+  public class MyApiController : UmbracoApiController
+  {
+
+    [HttpGet]
+    public IEnumerable<Event> EventsForDate(DateTime date)
+    {
+      //return new[] { "Cuthbert", "Dribble", "Grub", date.ToLongDateString() };
+      var rootNodes = Umbraco.ContentAtRoot();
+      var eventsNode = rootNodes.FirstOrDefault(x => x.DocumentTypeAlias == "eventsList");
+
+      var events = eventsNode.Children.OfType<Event>()
+          .Where(x => x.Date == date);
+      //.Where(x => x.IsVisible()); ?!
+
+
+      //return Json<IEnumerable<Event>>(events.ToList());
+      return events;
+    }
+
+
+    //[HttpGet]
+    // umbraco/api/myapi/isup
+    [HttpGet]
+    public bool IsUp()
+    {
+      return true;
+    }
+
+  }
+}
+*/

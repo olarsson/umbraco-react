@@ -1,0 +1,26 @@
+﻿ 
+ * API request via path |   getcontentatpath?=/contact
+    - 404 sida
+ 
+ * API request för routes | getroutes
+
+ * routing till masterview för alla requests
+    - server-side rendering i master-view för requesten
+
+
+
+	Utgångspunkten är
+
+/Controllers/ReactRenderMvcController.cs
+...som registreras som "DefaultRenderMvcController" i
+
+/Classes/Utilities/Composers.cs
+
+/Classes/React/ViewExtensions.cs behövs också.
+
+Objektet som skickas till Master.cshtml hanteras i
+/Controllers/ReactRoutesController.cs
+
+...där den aktuella sidan körs genom...
+/Models/_MasterModel.cs
+...som måste ärva av ContentModel (intern klass).
