@@ -35,7 +35,7 @@ namespace GetRoutesApi
       //var content = UmbracoContext.Content.GetAtRoot();
       //Debug.WriteLine(content);
 
-      var routesList = new List<Route>();
+      var routes = new List<Route>();
 
       var helper = Current.UmbracoHelper;
 
@@ -46,9 +46,9 @@ namespace GetRoutesApi
 
       foreach (var node in nodes)
       {
-        //Debug.WriteLine(node.Name); // individual
-        //Debug.WriteLine(node.ContentType.Alias); // shared (component)
-        routesList.Add(new Route()
+        // Debug.WriteLine(node.Name); // individual
+        // Debug.WriteLine(node.ContentType.Alias); // shared (component)
+        routes.Add(new Route()
         {
           component = node.ContentType.Alias,
           path = node.Url()
@@ -56,7 +56,7 @@ namespace GetRoutesApi
       }
 
       // 404 page
-      routesList.Add(new Route()
+      routes.Add(new Route()
       {
         component = "NotFound",
         path = "*"
@@ -64,10 +64,12 @@ namespace GetRoutesApi
 
       //Debug.Write(nodes);
 
-      return new
+      return routes;
+
+/*      return new
       {
-        results = routesList
-        /*        results = new List<Route>()
+        routes
+        *//*        results = new List<Route>()
                 {
                     new Route {
                       component = "Start",
@@ -77,9 +79,9 @@ namespace GetRoutesApi
                       component = "Contact",
                       path = "/test2"
                     },
-                }*/
+                }*//*
       };
-
+*/
     }
 
   }
