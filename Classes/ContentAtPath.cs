@@ -11,19 +11,6 @@ using System.Diagnostics;
 namespace GetContentAtPathApi
 {
 
-  /*  public class Header
-    {
-      public string pageTitle { get; set; }
-    }
-
-    public class JsonResultModel
-    {
-
-      public Header header;
-
-    }*/
-
-
   // https://localhost:44348/umbraco/api/ContentAtPathApi/GetContentAtPath?path=/contact
   //[JsonOnlyConfiguration]
   public class ContentAtPathApiController : UmbracoApiController
@@ -33,23 +20,88 @@ namespace GetContentAtPathApi
     {
       var content = UmbracoContext.Content.GetByRoute(path);
 
-      // Debug.WriteLine(content);
-
-      /*      var jsonResultObj = new JsonResultModel();
-            jsonResultObj.header.pageTitle = content.Value<String>("PageTitle");
-      */
-      return new
+      if (content == null)
       {
-        header = new
+        return new
         {
-          pageTitle = content.Value<String>("PageTitle")
-        }
-        /*        results = new List<Result>()
-                {
-                    new Result { id = 1, value = "ABC", info = "ABC" },
-                    new Result { id = 2, value = "JKL", info = "JKL" }
-                }*/
-      };
+          code = 404,
+          text = "The page could not be found."
+        };
+      }
+
+      // get alias/component name for url and return object structure based on it
+
+      // Debug.WriteLine(content.ContentType.Alias);
+
+      switch (content.ContentType.Alias)
+      {
+        case "home":
+          return new
+          {
+            code = 200,
+            text = "Ok",
+            header = new
+            {
+              homeAttr = "only exists for home page",
+              pageTitle = content.Value<String>("PageTitle")
+            }
+          };
+        case "contact":
+          return new
+          {
+            code = 200,
+            text = "Ok",
+            header = new
+            {
+              contactAttr = "only exists for contact page",
+              pageTitle = content.Value<String>("PageTitle")
+            }
+          };
+        case "faq":
+          return new
+          {
+            code = 200,
+            text = "Ok",
+            header = new
+            {
+              faqAttr = "only exists for faq page",
+              pageTitle = content.Value<String>("PageTitle")
+            }
+          };
+        case "somePage":
+          return new
+          {
+            code = 200,
+            text = "Ok",
+            header = new
+            {
+              somePageAttr = "only exists for somePage page",
+              pageTitle = content.Value<String>("PageTitle")
+            }
+          };
+        default:
+          return new
+          {
+            code = 200,
+            text = "This path lacks routing."
+          };
+      }
+
+
+      /*      return new
+            {
+              code = 200,
+              text = "Ok",
+              header = new
+              {
+                pageTitle = content.Value<String>("PageTitle")
+              }
+              *//*        results = new List<Result>()
+                      {
+                          new Result { id = 1, value = "ABC", info = "ABC" },
+                          new Result { id = 2, value = "JKL", info = "JKL" }
+                      }*//*
+            };*/
 
     }
 
