@@ -1,7 +1,5 @@
 ﻿ 
- * API request via path |   getcontentatpath?=/contact
-    - 404 sida
- 
+ * API request för content via en URL + 404 svar
  * API request för routes | getroutes
 
  * routing till masterview för alla requests

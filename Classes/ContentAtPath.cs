@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Linq;
 using Umbraco.Web;
 using Umbraco.Web.WebApi;
 using System.Web.Mvc;
-using System.Web.Http.Controllers;
-using System.Net.Http.Formatting;
-using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace GetContentAtPathApi
 {
 
-  // https://localhost:44348/umbraco/api/ContentAtPathApi/GetContentAtPath?path=/contact
-  //[JsonOnlyConfiguration]
-  public class ContentAtPathApiController : UmbracoApiController
+  // https://localhost:44348/umbraco/api/contentbypathapi/getcontent?path=/contact1
+  public class ContentByPathApiController : UmbracoApiController
   {
     [HttpGet]
-    public Object GetContentAtPath(string path)
+    public Object GetContent(string path)
     {
       var content = UmbracoContext.Content.GetByRoute(path);
 
@@ -28,10 +22,6 @@ namespace GetContentAtPathApi
           text = "The page could not be found."
         };
       }
-
-      // get alias/component name for url and return object structure based on it
-
-      // Debug.WriteLine(content.ContentType.Alias);
 
       switch (content.ContentType.Alias)
       {
@@ -46,6 +36,7 @@ namespace GetContentAtPathApi
               pageTitle = content.Value<String>("PageTitle")
             }
           };
+
         case "contact":
           return new
           {
@@ -57,6 +48,7 @@ namespace GetContentAtPathApi
               pageTitle = content.Value<String>("PageTitle")
             }
           };
+
         case "faq":
           return new
           {
@@ -68,6 +60,7 @@ namespace GetContentAtPathApi
               pageTitle = content.Value<String>("PageTitle")
             }
           };
+
         case "somePage":
           return new
           {
@@ -79,12 +72,14 @@ namespace GetContentAtPathApi
               pageTitle = content.Value<String>("PageTitle")
             }
           };
+
         default:
           return new
           {
             code = 200,
             text = "This path lacks routing."
           };
+
       }
 
 

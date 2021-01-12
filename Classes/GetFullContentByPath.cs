@@ -29,11 +29,11 @@ public class IgnorePropertiesResolverFull : DefaultContractResolver
 
 namespace apiNameFull
 {
-  // https://localhost:44348/umbraco/api/FullContentAtPathApi/GetFullContentAtPath?path=/contact
-  public class FullContentAtPathApiController : UmbracoApiController
+  // https://localhost:44348/umbraco/api/fullcontentbypathapi/getcontent?path=/contact1
+  public class FullContentByPathApiController : UmbracoApiController
   {
     [HttpGet]
-    public string GetFullContentAtPath(string path)
+    public string GetContent(string path)
     {
       var content = UmbracoContext.Content.GetByRoute(path);
 

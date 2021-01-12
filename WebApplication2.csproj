@@ -325,13 +325,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ContentApiController.cs" />
+    <Compile Include="Classes\Unused\ContentApiController.cs" />
     <Compile Include="Classes\ContentAtPath.cs" />
-    <Compile Include="Classes\FullContentByPath.cs" />
-    <Compile Include="Classes\MediaApi.cs" />
-    <None Include="Classes\MyApiController.cs.old" />
+    <Compile Include="Classes\GetFullContentByPath.cs" />
+    <Compile Include="Classes\Unused\MediaApi.cs" />
+    <None Include="Classes\Unused\MyApiController.cs.old" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Classes\Routes.cs" />
+    <Compile Include="Classes\GetRoutes.cs" />
     <Compile Include="Controllers\ReactRenderMvcController.cs" />
     <Compile Include="Controllers\ReactRoutesController.cs" />
     <Compile Include="Models\_MasterModel.cs" />
@@ -362,7 +362,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
     <Content Include="Views\master.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\somepage.cshtml" />
     <None Include="Web.Debug.config">
