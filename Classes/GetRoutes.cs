@@ -46,7 +46,7 @@ namespace GetRoutesApi
 
       dynamic allRoutes = new List<dynamic>();
 
-      dynamic routeObj = CreateRoute(rootNode, null, null, null, true);
+      dynamic routeObj = CreateRoute(rootNode, exactPath: true);
       /*routeObj.onlyForStart = "test";*/
 
       allRoutes.Add(routeObj);
@@ -58,22 +58,22 @@ namespace GetRoutesApi
         switch (node.ContentType.Alias)
         {
           case "contact":
-            routeObj = CreateRoute(node, null, null, null, false);
+            routeObj = CreateRoute(node, exactPath: false);
             /*routeObj.onlyForContact = "test";*/
             break;
           case "faq":
-            routeObj = CreateRoute(node, null, null, null, true);
+            routeObj = CreateRoute(node, exactPath: true);
             /*routeObj.onlyForFaq = "test";*/
             break;
           case "somePage":
-            routeObj = CreateRoute(node, null, null, null, true);
+            routeObj = CreateRoute(node, exactPath: true);
             /*routeObj.onlyForSomePage = "test";*/
             break;
         }
         allRoutes.Add(routeObj);
       }
 
-      routeObj = CreateRoute(null, "NotFound", "*", "Page can't be found!", false, null, false);
+      routeObj = CreateRoute(component: "NotFound", path: "*", pageTitle: "Page can't be found!", exactPath: false, show: false);
       allRoutes.Add(routeObj);
 
       return new
